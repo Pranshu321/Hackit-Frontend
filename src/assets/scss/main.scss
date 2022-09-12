@@ -1,0 +1,31 @@
+@import "./variables/colors";
+@import "./base/reset";
+@import "./variables/fonts";
+
+
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    //overflow-x: hidden;
+    overscroll-behavior-y: none;
+    // scrollbar-width: none; /* for Firefox */  
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.app {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+// @import "components/heroSection";
+
