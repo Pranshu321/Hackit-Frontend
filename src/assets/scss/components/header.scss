@@ -1,0 +1,92 @@
+@import "../variables/colors";
+@import "../base/reset";
+@import "../variables/fonts";
+@import "../base/_mixins.scss";
+
+
+.main-nav {
+    display: block;
+    padding: 1rem 3rem;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    transition: background 0.3s ease-in-out;
+    background: $color_3;
+    // border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    // box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
+
+    > .content-wrapper-sm {
+        @include display-flex(row, space-between);
+    }
+
+    @include media-breakpoint-up(md) {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $white;
+        text-decoration: none;
+    }
+
+    .nav-links {
+        position: relative;
+        top: auto;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: none;
+        overflow: hidden;
+        height: 0;
+        background: transparent;
+
+        @include media-breakpoint-up(md) {
+            display: flex;
+            height: auto;
+        }
+
+        li {
+            margin: 1rem;
+            text-align: center;
+
+            a {
+                color: $color_5;
+                display: block;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .nav-open {
+        position: absolute;
+        top: 133%;
+        width: 100%;
+        display: block;
+        height: auto;
+        background: $color_3;
+
+        li {
+            margin: 0;
+
+            a {
+                padding: 2rem 0;
+            }
+
+            border-top: 1px solid transparentize($white, 0.8);
+        }
+    }
+}
+
+.fixed-nav {
+    background: $color_3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease-in-out;
+}

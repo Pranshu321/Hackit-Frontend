@@ -85,34 +85,6 @@
      transition: background 0.3s ease-in-out;
 }
 
-header {
-     position: relative;
-     height: 100vh;
-     color: $white;
-     text-align: center;
-     @include display-flex(column);
-
-     h1 {
-          font-size: 3.25rem;
-          font-weight: 100;
-          text-transform: uppercase;
-          line-height: 1.2;
-          margin: 0;
-
-          @include media-breakpoint-up(sm) {
-               font-size: 4.25rem;
-          }
-
-          @include media-breakpoint-up(md) {
-               font-size: 6.25rem;
-          }
-     }
-
-     h2 {
-          font-weight: 300;
-          font-size: 1.5rem;
-     }
-}
 
 .img-absolute {
      position: absolute;
