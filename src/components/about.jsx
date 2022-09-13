@@ -1,6 +1,13 @@
+import React from "react";
+import {Helmet} from 'react-helmet';
+
+
 const About = () => {
 	return (
 		<>
+		    <Helmet>
+				<title>Wecare | About</title>
+			</Helmet>
 			<div className="content-wrapper" id="about">
 				{/* <!-- second replaceble image --> */}
 				<img
@@ -8,12 +15,12 @@ const About = () => {
 					src="https://raw.githubusercontent.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/img/city2.png"
 					alt="City 2"
 				/>
-				<div className="grid">
+				<div className="grid" style={{marginTop: "90px"}}>
 					<div
 						className="grid-col-sm-12 grid-col-md-6 astonish"
 						data-animation="fadeInLeft"
 					>
-						<h2 className="section-title">About Wecare</h2>
+						<h2 className="section-title" style={{fontSize: "3rem"}}>About Wecare</h2>
 						<p>
 							CityScapes is a fully responsive and customizable landing
 							page template. All images can easily be replaced from the
@@ -39,7 +46,7 @@ const About = () => {
 				className="content-wrapper-lg text-center astonish"
 				data-animation="zoomIn"
 			>
-				<h2 className="section-title">Explore Our AI-BOT</h2>
+				<h2 className="section-title" style={{fontSize: "2.5rem"}}>Explore Our AI-BOT</h2>
 				<p>
 					CityScapes is great for any travel agency or tour agency, that
 					wishes to showcase the focal points of a city. If you want a

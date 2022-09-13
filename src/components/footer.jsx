@@ -1,6 +1,9 @@
+import React from "react";
+
 const Footer = () => {
     return (
-        <footer>
+        <>
+            <footer>
                 <div className="content-wrapper-sm display-flex-between">
                     {/* <!-- Easily replaceble copyright information --> */}
                     <small>© {new Date().getFullYear()} , WeCare Copyright , All rights reserved </small>
@@ -21,6 +24,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
+        </>
     )
-    }
+}
 export default Footer;

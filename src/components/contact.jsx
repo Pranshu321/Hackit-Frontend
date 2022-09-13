@@ -1,6 +1,11 @@
+import React from "react";
+import { Helmet } from "react-helmet";
 const Contact = () => {
 	return (
 		<>
+		   <Helmet>
+			<title>Wecare | Contact</title>
+		   </Helmet>
 			<div className="content-wrapper" id="contact">
 				{/* <!-- Third replaceble image --> */}
 				<img
@@ -12,11 +17,12 @@ const Contact = () => {
 				{/* <!-- Custom form, important note: you will need additional code in order to make this form work --> */}
 				<form
 					className="contact-form astonish"
+					style={{marginTop: "90px"}}
 					action="#"
 					method="post"
 					data-animation="fadeInRight"
 				>
-					<h2 className="section-title">Contact Us</h2>
+					<h2 className="section-title" style={{fontSize: "3rem"}}>Contact Us</h2>
 					<div className="grid">
 						<div className="grid-col-sm-12 grid-col-md-6">
 							<div className="form-group">
