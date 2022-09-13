@@ -1,6 +1,11 @@
+import Header from "./header";
+import Footer from "./footer";
+
 const About = () => {
 	return (
 		<>
+			<Header />
+
 			<div className="content-wrapper" id="about">
 				{/* <!-- second replaceble image --> */}
 				<img
@@ -55,6 +60,8 @@ const About = () => {
 					Download
 				</a>
 			</div>
+			<Footer />
+
 		</>
 	);
 };

@@ -1,6 +1,11 @@
+import Header from "./header";
+import Footer from "./footer";
+
 const Contact = () => {
 	return (
 		<>
+			<Header />
+
 			<div className="content-wrapper" id="contact">
 				{/* <!-- Third replaceble image --> */}
 				<img
@@ -68,6 +73,8 @@ const Contact = () => {
 					<a href="https://mcpenation.com/">https://mcpenation.com</a>
 				</div>
 			</div>
+			<Footer />
+
 		</>
 	);
 };
