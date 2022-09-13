@@ -1,6 +1,5 @@
 import React from 'react'
 import '../assets/scss/Home/styles.scss';
-import '../assets/css/responsive.css'
 
 const Home = () => {
     return (
@@ -65,25 +64,25 @@ const Home = () => {
                             <div className="grid-col-sm-12 grid-col-md-6">
                                 <div className="form-group">
                                     <input type="text" name="firstName" required />
-                                    <label for="firstName">First Name:</label>
+                                    <label htmlFor="firstName">First Name:</label>
                                 </div>
                             </div>
                             <div className="grid-col-sm-12 grid-col-md-6">
                                 <div className="form-group">
                                     <input type="text" name="lastName" required />
-                                    <label for="lasttName">Last Name:</label>
+                                    <label htmlFor="lasttName">Last Name:</label>
                                 </div>
                             </div>
                             <div className="grid-col-sm-12">
                                 <div className="form-group">
                                     <input type="text" name="email" required />
-                                    <label for="email">Email:</label>
+                                    <label htmlFor="email">Email:</label>
                                 </div>
                             </div>
                             <div className="grid-col-sm-12">
                                 <div className="form-group">
                                     <textarea name="message" required></textarea>
-                                    <label for="message">Message:</label>
+                                    <label htmlFor="message">Message:</label>
                                 </div>
                             </div>
                         </div>
@@ -93,10 +92,10 @@ const Home = () => {
 
                 {/* <!-- This is an embedded Google map, this is easily customizable especially if you get a Google API key, this will allow for more customizable features. --> */}
                 {/* eslint-disable-next-line */}
-                <div class="mapouter">
-                    <div class="gmap_canvas">
+                <div className="mapouter">
+                    <div className="gmap_canvas">
                     {/* eslint-disable-next-line */}
-                        <iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Manav Rachna International Institute Of Research And Studies&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                        <iframe className="gmap_iframe" width="100%" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Manav Rachna International Institute Of Research And Studies&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                         <a href="https://mcpenation.com/">https://mcpenation.com</a>
                     </div>
                 </div>
