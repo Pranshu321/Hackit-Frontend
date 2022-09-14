@@ -216,24 +216,24 @@ const Dashboard = () => {
 												<span class="details">Full Name</span>
 												<input
 													type="text"
-													placeholder="E.g: John Smith"
-													required
+													placeholder={users.displayName}
+													disabled
 												/>
 											</div>
 											<div class="input__box">
-												<span class="details">Username</span>
+												<span class="details">Unieque ID</span>
 												<input
 													type="text"
-													placeholder="johnWC98"
-													required
+													placeholder={users.uid}
+													disabled
 												/>
 											</div>
 											<div class="input__box">
 												<span class="details">Email</span>
 												<input
 													type="email"
-													placeholder="johnsmith@hotmail.com"
-													required
+													placeholder={users.email}
+													disabled
 												/>
 											</div>
 											<div class="input__box">
@@ -246,14 +246,14 @@ const Dashboard = () => {
 												/>
 											</div>
 											<div class="input__box">
-												<span class="details">Password</span>
+												<span class="details">Specialization</span>
 												<input
-													type="password"
-													placeholder="********"
+													type="text"
+													placeholder="Specialization"
 													required
 												/>
 											</div>
-											<div class="input__box">
+											{/* <div class="input__box">
 												<span class="details">
 													Confirm Password
 												</span>
@@ -262,7 +262,7 @@ const Dashboard = () => {
 													placeholder="********"
 													required
 												/>
-											</div>
+											</div> */}
 										</div>
 										<div class="gender__details">
 											<input type="radio" name="gender" id="dot-1" />
