@@ -58,6 +58,7 @@ const About = () => {
 					and download it for free from Github.
 				</p>
 				<Link to={"/chatbot"}>
+				
 				<a
 					className="btn btn-outline-purple"
 					target="_blank"
