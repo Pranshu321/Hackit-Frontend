@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "../variables/colors";
+@import "../variables/fonts";
+@import "../base/_mixins.scss";
 
 :root {
 	--c-gray-900: #000000;
@@ -21,7 +24,7 @@
 	--c-text-tertiary: var(--c-gray-500);
 }
 
-.main-dashboard{
+.main-dashboard {
 	line-height: 1.5;
 	min-height: 100vh;
 	font-family: "Be Vietnam Pro", sans-serif;
@@ -66,7 +69,7 @@ a {
 	min-height: 80vh;
 	width: 95%;
 	max-width: 1600px;
-	background-color: var(--c-gray-800);
+	background-color: $color_3;
 	padding: 2vw 4vw 6vw;
 	display: flex;
 	flex-direction: column;
@@ -74,10 +77,7 @@ a {
 
 .app-header {
 	display: grid;
-	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
-			max-content,
-			400px
-		);
+	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(max-content, 400px);
 	column-gap: 4rem;
 	align-items: flex-end;
 	@media (max-width: 1200px) {
@@ -123,10 +123,7 @@ a {
 .app-body {
 	height: 100%;
 	display: grid;
-	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
-			min-content,
-			400px
-		);
+	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(min-content, 400px);
 
 	column-gap: 4rem;
 	padding-top: 2.5rem;
@@ -841,5 +838,195 @@ button {
 	&:focus {
 		outline: 0;
 		box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px var(--c-gray-300);
+	}
+}
+
+//******************** css styles for doctors form 	************************/
+
+/* all */
+/* container and form */
+/* inside the form user details */
+/* inside the form gender details */
+/* submit button */
+
+.container {
+	max-width: 700px;
+	width: 100%;
+	background: #fff;
+	padding: 25px 30px;
+	border-radius: 5px;
+	.title {
+		font-size: 25px;
+		font-weight: 500;
+		position: relative;
+		&::before {
+			content: "";
+			position: absolute;
+			height: 3.5px;
+			width: 30px;
+			background: linear-gradient(135deg, var(--main-blue), var(--main-purple));
+			left: 0;
+			bottom: 0;
+		}
+	}
+	form {
+		.user__details {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin: 20px 0 12px 0;
+		}
+	}
+}
+form {
+	.user__details {
+		.input__box {
+			width: calc(100% / 2 - 20px);
+			margin-bottom: 15px;
+		}
+	}
+	.gender__details {
+		.gender__title {
+			font-size: 20px;
+			font-weight: 500;
+		}
+		.category {
+			display: flex;
+			width: 80%;
+			margin: 15px 0;
+			justify-content: space-between;
+		}
+	}
+	input[type="radio"] {
+		display: none;
+	}
+	.button {
+		height: 45px;
+		margin: 45px 0;
+		input {
+			height: 100%;
+			width: 100%;
+			outline: none;
+			color: #fff;
+			border: none;
+			font-size: 18px;
+			font-weight: 500;
+			border-radius: 5px;
+			background: linear-gradient(135deg, $color_1, $color_2);
+			transition: all 0.3s ease;
+			&:hover {
+				background: linear-gradient(-135deg, $color_5, $color_4);
+			}
+		}
+	}
+}
+.user__details {
+	.input__box {
+		.details {
+			font-weight: 500;
+			margin-bottom: 5px;
+			display: block;
+		}
+		input {
+			height: 45px;
+			width: 100%;
+			outline: none;
+			border-radius: 5px;
+			border: 1px solid var(--main-grey);
+			padding-left: 15px;
+			font-size: 16px;
+			border-bottom-width: 2px;
+			transition: all 0.3s ease;
+			&:focus {
+				border-color: $color_1;
+			}
+			&:valid {
+				border-color: $color_1;
+			}
+		}
+	}
+}
+.gender__details {
+	.category {
+		display: flex;
+		flex-direction: column;
+		label {
+			display: flex;
+			align-items: center;
+		}
+		.dot {
+			height: 18px;
+			width: 18px;
+			background: $color_5;
+			border-radius: 50%;
+			margin: 10px;
+			border: 5px solid transparent;
+			transition: all 0.3s ease;
+		}
+	}
+}
+#dot-1 {
+	&:checked {
+		~ {
+			.category {
+				.one {
+					border-color: var(--sub-grey);
+					background: var(--main-purple);
+				}
+			}
+		}
+	}
+}
+#dot-2 {
+	&:checked {
+		~ {
+			.category {
+				.two {
+					border-color: var(--sub-grey);
+					background: var(--main-purple);
+				}
+			}
+		}
+	}
+}
+#dot-3 {
+	&:checked {
+		~ {
+			.category {
+				.three {
+					border-color: var(--sub-grey);
+					background: var(--main-purple);
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: 584px) {
+	.container {
+		max-width: 100%;
+		form {
+			.user__details {
+				max-height: 300px;
+				overflow-y: scroll;
+			}
+		}
+	}
+	form {
+		.user__details {
+			.input__box {
+				margin-bottom: 15px;
+				width: 100%;
+			}
+		}
+		.gender__details {
+			.category {
+				width: 100%;
+			}
+		}
+	}
+	.user__details {
+		&::-webkit-scrollbar {
+			width: 0;
+		}
 	}
 }
