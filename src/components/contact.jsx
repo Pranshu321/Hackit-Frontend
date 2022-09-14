@@ -1,11 +1,15 @@
-import React from "react";
+import Header from "./header";
+import Footer from "./footer";
 import { Helmet } from "react-helmet";
+
 const Contact = () => {
 	return (
 		<>
-		   <Helmet>
-			<title>Wecare | Contact</title>
-		   </Helmet>
+		<Helmet>
+				<title>Wecare | Contact</title>
+			</Helmet>
+			<Header />
+
 			<div className="content-wrapper" id="contact">
 				{/* <!-- Third replaceble image --> */}
 				<img
@@ -74,6 +78,8 @@ const Contact = () => {
 					<a href="https://mcpenation.com/">https://mcpenation.com</a>
 				</div>
 			</div>
+			<Footer />
+
 		</>
 	);
 };

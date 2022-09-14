@@ -1,13 +1,16 @@
-import React from "react";
-import {Helmet} from 'react-helmet';
-
+import Header from "./header";
+import Footer from "./footer";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const About = () => {
 	return (
 		<>
-		    <Helmet>
+		<Helmet>
 				<title>Wecare | About</title>
 			</Helmet>
+			<Header />
+
 			<div className="content-wrapper" id="about">
 				{/* <!-- second replaceble image --> */}
 				<img
@@ -54,14 +57,17 @@ const About = () => {
 					will attract clients, then this is the template for you. Go ahead
 					and download it for free from Github.
 				</p>
+				<Link to={"/chatbot"}>
 				<a
-					href="/ttps://github.com/Jesus-E-Rodriguez/cityscapes-landing-page"
 					className="btn btn-outline-purple"
 					target="_blank"
 				>
-					Download
+					Try Now
 				</a>
+				</Link>
 			</div>
+			<Footer />
+
 		</>
 	);
 };
