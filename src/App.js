@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Contact from "./components/contact";
 import About from "./components/about";
 import ChatBot from "./components/ChatBot";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/dashboard";
 
 function App() {
 	return (
