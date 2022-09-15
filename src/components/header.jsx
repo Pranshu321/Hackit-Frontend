@@ -53,11 +53,13 @@ const Header = () => {
 						<li>
 							<Link to="/contact">Contact</Link>
 						</li>
-						<li onClick={loginwithgoogle} style={{cursor: "pointer"}}>
-							<a style={{ backgroundColor: "#C4AC75", color: "black", padding: "10px 20px", marginTop: "-10px" }}>
-								Patient Login
+						<Link to={"/userform"}>
+						<li style={{cursor: "pointer"}}>
+							<a style={{ backgroundColor: "#C4AC75" , color: "black", padding: "10px 20px", marginTop: "-10px" }}>
+								Book Your Appointment
 							</a>
 						</li>
+						</Link>
 						<li onClick={loginwithgoogle} style={{cursor: "pointer"}}>
 							<a style={{ border: `2px solid #c4ac8c` , color: "white", padding: "10px 20px", marginTop: "-11px" }}>
 								Doctor Login

@@ -7,6 +7,7 @@ import Contact from "./components/contact";
 import About from "./components/about";
 import ChatBot from "./components/ChatBot";
 import Dashboard from "./components/Dashboard";
+import UserForm from "./components/UserForm";
 
 function App() {
 	return (
@@ -17,6 +18,7 @@ function App() {
 				<Route path="/contact" element={<Contact />} />
 				<Route path="/chatbot" element={<ChatBot />} />
 				<Route path="/dashboard" element={<Dashboard />} />
+				<Route path="/userform" element={<UserForm />} />
 			</Routes>
 		</>
 	);

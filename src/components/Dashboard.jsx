@@ -1,16 +1,64 @@
 import React, { useEffect, useState } from "react";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { doc, setDoc, getDoc, onSnapshot } from "firebase/firestore";
 const Dashboard = () => {
 	const [users, setuser] = useState([{}]);
 	const [photo, setphot] = useState("");
-	useEffect(() => {
+	const [doctor, setdoctor] = useState({
+		Name: users.displayName,
+		Uid: users.uid,
+		Email: users.email,
+		Phone: 0,
+		Specialization: "",
+		Gender: ""
+	});
+	const [getdatadoctor, setdatadoctor] = useState({});
+
+	async function DoctorRegistration(e) {
+		e.preventDefault();
+		await setDoc(doc(db, "Doctor", doctor.Uid), doctor).then(() => {
+			toast.success('Profile Updated !!', {
+				position: "bottom-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+		}).catch((err) => {
+			console.log(err);
+		})
+	}
+
+	async function doctorgetdatafromfirestore() {
+		const docRef = doc(db, "Doctor", users.uid);
+		const docSnap = await getDoc(docRef);
+
+		if (docSnap.exists()) {
+			setdatadoctor(docSnap.data());
+		} else {
+			// doc.data() will be undefined in this case
+			console.log("No such document!");
+		}
+		// onSnapshot(doc(db, "Doctor", users.uid), (doc) => {
+		// 	console.log(doc.data());
+		// 	setdatadoctor(doc.data());
+		// });
+	}
+
+	async function UserAuthdetails() {
 		onAuthStateChanged(auth, (user) => {
+			doctorgetdatafromfirestore();
 			if (user) {
 				// User is signed in, see docs for a list of available properties
 				// https://firebase.google.com/docs/reference/js/firebase.User
 				const uid = user.uid;
 				setphot(user.photoURL);
+				setdoctor({ ...doctor, Name: user.displayName, Email: user.email, Uid: user.uid });
 				console.log(user);
 				setuser(user);
 				// ...
@@ -20,27 +68,37 @@ const Dashboard = () => {
 				// ...
 			}
 		});
+	}
+
+	useEffect(() => {
+		doctorgetdatafromfirestore();
+		UserAuthdetails();
 	}, []);
 	return (
 		<>
+			<ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 			<div className="main-dashboard">
 				<div class="app">
 					<header class="app-header">
 						<div class="app-header-logo">
 							<div class="logo">
 								<span class="logo-icon">
-									<img src={photo} alt="profile" />
+									<img src={photo} alt="profile" style={{ borderRadius: "100%" }} />
 								</span>
 								<h1 class="logo-title">
 									<span>{users.displayName}</span>
 								</h1>
 							</div>
-						</div>
-
-						<div class="app-header-mobile">
-							<button class="icon-button large">
-								<i class="ph-list"></i>
-							</button>
 						</div>
 					</header>
 					<div class="app-body">
@@ -52,7 +110,7 @@ const Dashboard = () => {
 								</a>
 								<a href="#">
 									<i class="ph-check-square"></i>
-									<span>Scheduled</span>
+									<span>Event Scheduled</span>
 								</a>
 								<a href="#">
 									<i class="ph-swap"></i>
@@ -75,22 +133,18 @@ const Dashboard = () => {
 						</div>
 						<div class="app-body-main-content">
 							<section class="service-section">
-								<h2>Service</h2>
-
-								<div class="mobile-only">
-									<button class="flat-button">Toggle search</button>
-								</div>
+								<h2>Overview</h2>
 								<div class="tiles">
 									<article class="tile">
 										<div class="tile-header">
 											<i class="ph-lightning-light"></i>
 											<h3>
-												<span>Electricity</span>
-												<span>UrkEnergo LTD.</span>
+												<span>Patient Alloted</span>
+												<span style={{ textAlign: "center", fontSize: "40px", fontWeight: "700" }}>7</span>
 											</h3>
 										</div>
 										<a href="#">
-											<span>Go to service</span>
+											<span>Go To Cases</span>
 											<span class="icon-button">
 												<i class="ph-caret-right-bold"></i>
 											</span>
@@ -100,12 +154,12 @@ const Dashboard = () => {
 										<div class="tile-header">
 											<i class="ph-fire-simple-light"></i>
 											<h3>
-												<span>Heating Gas</span>
-												<span>Gazprom UA</span>
+												<span>Patient Cured</span>
+												<span style={{ textAlign: "center", fontSize: "40px", fontWeight: "700" }}>17</span>
 											</h3>
 										</div>
 										<a href="#">
-											<span>Go to service</span>
+											<span>File Reports</span>
 											<span class="icon-button">
 												<i class="ph-caret-right-bold"></i>
 											</span>
@@ -115,12 +169,12 @@ const Dashboard = () => {
 										<div class="tile-header">
 											<i class="ph-file-light"></i>
 											<h3>
-												<span>Tax online</span>
-												<span>Kharkov 62 str.</span>
+												<span>Reward Points</span>
+												<span style={{ textAlign: "center", fontSize: "40px", fontWeight: "700" }}>63 ⭐</span>
 											</h3>
 										</div>
 										<a href="#">
-											<span>Go to service</span>
+											<span>Claim Rewards</span>
 											<span class="icon-button">
 												<i class="ph-caret-right-bold"></i>
 											</span>
@@ -206,25 +260,28 @@ const Dashboard = () => {
 							<section class="payment-section">
 								<h2>Profile</h2>
 								<div class="payment-section-header">
-									<p>Choose a card to transfer money</p>
+									<p>details of your specializations</p>
 									<div></div>
 								</div>
 								<div class="payments">
-									<form action="#">
+									<form action="#" onSubmit={DoctorRegistration}>
 										<div class="user__details">
 											<div class="input__box">
 												<span class="details">Full Name</span>
 												<input
+													style={{ color: "white" }}
 													type="text"
-													placeholder={users.displayName}
+													value={users.displayName}
 													disabled
 												/>
 											</div>
 											<div class="input__box">
-												<span class="details">Unieque ID</span>
+												<span class="details">Unique ID</span>
 												<input
+													style={{ width: "20rem", color: "white" }}
+
 													type="text"
-													placeholder={users.uid}
+													value={users.uid}
 													disabled
 												/>
 											</div>
@@ -232,7 +289,8 @@ const Dashboard = () => {
 												<span class="details">Email</span>
 												<input
 													type="email"
-													placeholder={users.email}
+													style={{ width: "15rem", color: "white" }}
+													value={users.email}
 													disabled
 												/>
 											</div>
@@ -240,8 +298,9 @@ const Dashboard = () => {
 												<span class="details">Phone Number</span>
 												<input
 													type="tel"
-													pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+													value={getdatadoctor.Phone != null ? getdatadoctor.Phone : null}
 													placeholder="012-345-6789"
+													onChange={(e) => { setdoctor({ ...doctor, Phone: e.target.value }) }}
 													required
 												/>
 											</div>
@@ -250,6 +309,8 @@ const Dashboard = () => {
 												<input
 													type="text"
 													placeholder="Specialization"
+													value={getdatadoctor.Specialization != null ? getdatadoctor.Specialization : null}
+													onChange={(e) => { setdoctor({ ...doctor, Specialization: e.target.value }) }}
 													required
 												/>
 											</div>
@@ -271,15 +332,15 @@ const Dashboard = () => {
 											<span class="gender__title">Gender</span>
 											<div class="category">
 												<label for="dot-1">
-													<span class="dot one"></span>
+													<span class="dot one" onClick={() => { setdoctor({ ...doctor, Gender: "Male" }) }} ></span>
 													<span>Male</span>
 												</label>
 												<label for="dot-2">
-													<span class="dot two"></span>
+													<span class="dot two" onClick={() => { setdoctor({ ...doctor, Gender: "Female" }) }}></span>
 													<span>Female</span>
 												</label>
 												<label for="dot-3">
-													<span class="dot three"></span>
+													<span class="dot three" onClick={() => { setdoctor({ ...doctor, Gender: "Prefer not to say" }) }}></span>
 													<span>Prefer not to say</span>
 												</label>
 											</div>
@@ -290,7 +351,7 @@ const Dashboard = () => {
 									</form>
 								</div>
 								<div class="faq">
-									<p>Most frequently asked questions</p>
+									<p>Please Fill above details carefully</p>
 								</div>
 							</section>
 						</div>

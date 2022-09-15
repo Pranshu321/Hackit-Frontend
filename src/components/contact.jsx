@@ -63,7 +63,7 @@ const Contact = () => {
 
 			{/* <!-- This is an embedded Google map, this is easily customizable especially if you get a Google API key, this will allow for more customizable features. --> */}
 			{/* eslint-disable-next-line */}
-			<div className="mapouter">
+			<div className="mapouter" style={{marginBottom: "40px"}}>
 				<div className="gmap_canvas">
 					{/* eslint-disable-next-line */}
 					<iframe

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const About = () => {
 	return (
 		<>
-		<Helmet>
+			<Helmet>
 				<title>Wecare | About</title>
 			</Helmet>
 			<Header />
@@ -18,27 +18,27 @@ const About = () => {
 					src="https://raw.githubusercontent.com/Jesus-E-Rodriguez/cityscapes-landing-page/master/img/city2.png"
 					alt="City 2"
 				/>
-				<div className="grid" style={{marginTop: "90px"}}>
+				<div className="grid" style={{ marginTop: "90px" }}>
 					<div
 						className="grid-col-sm-12 grid-col-md-6 astonish"
 						data-animation="fadeInLeft"
 					>
-						<h2 className="section-title" style={{fontSize: "3rem"}}>About Wecare</h2>
+						<h2 className="section-title" style={{ fontSize: "3rem" }}>About Wecare</h2>
 						<p>
-							CityScapes is a fully responsive and customizable landing
-							page template. All images can easily be replaced from the
-							html side, without having to dig through the css.
+							Compassion , expertise and experience are qualities to look for when choosing a care team for your
+							child , adolescent or young adult with cancer Trust us to provide comprehensive pediatric cancer care
+							close to home in South Texas and offer innovative cancer treatments
 						</p>
 						<p>
-							The full version of this template is available at Github
-							and it comes with the SASS files in order to provide
-							quicker customization features, for those who are
-							developers.
+							Rely on our specialists to know the difference between childhood and adult diseases. They
+							understand which treatments are most successful for younger patients and will deliver follow - up care
+							after treatment .
 						</p>
 						<p>
-							Javascript files are also included, they are used to
-							enhance the user experience but apart from the menu.js
-							file, they are all optional.
+							When you Wecare for care , your child will get care at our Pediatric Blood &
+							Center . The center focuses on treating children , teens and young adults . Your child will receive
+							care at the only academic medical center in San Antonio Our doctors know the most advanced
+							treatment options and can provide the best medical care possible
 						</p>
 					</div>
 				</div>
@@ -49,22 +49,18 @@ const About = () => {
 				className="content-wrapper-lg text-center astonish"
 				data-animation="zoomIn"
 			>
-				<h2 className="section-title" style={{fontSize: "2.5rem"}}>Explore Our AI-BOT</h2>
+				<h2 className="section-title" style={{ fontSize: "2.5rem" }}>Explore Our AI-BOT</h2>
 				<p>
-					CityScapes is great for any travel agency or tour agency, that
-					wishes to showcase the focal points of a city. If you want a
-					unique looking landing page that has a unique artistic style that
-					will attract clients, then this is the template for you. Go ahead
-					and download it for free from Github.
+					Over the past years, smart algorithm-powered, text- or voice-based interfaces have multiplied, and they are also taking their place in healthcare. The Medical Futurist believes Molly, Ginger, Replika and the others will ease the burden on doctors in primary care and help patients learn to take care of their health responsibly
 				</p>
 				<Link to={"/chatbot"}>
-				
-				<a
-					className="btn btn-outline-purple"
-					target="_blank"
-				>
-					Try Now
-				</a>
+
+					<a
+						className="btn btn-outline-purple"
+						target="_blank"
+					>
+						Try Now
+					</a>
 				</Link>
 			</div>
 			<Footer />
