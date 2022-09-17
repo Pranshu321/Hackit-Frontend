@@ -24,7 +24,6 @@ const Contact = () => {
 					style={{marginTop: "90px"}}
 					action="#"
 					method="post"
-					data-animation="fadeInRight"
 				>
 					<h2 className="section-title" style={{fontSize: "3rem"}}>Contact Us</h2>
 					<div className="grid">

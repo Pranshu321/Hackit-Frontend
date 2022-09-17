@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { auth } from '../firebase'
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import { useState } from "react";
 // import Wecare from '../assets/img/Wecare.png';
 
 const Header = () => {
     const provider = new GoogleAuthProvider();
+	const [isActive, setActive] = useState();
 	const loginwithgoogle = () => {
 		signInWithPopup(auth, provider)
 			.then((result) => {
@@ -28,6 +30,16 @@ const Header = () => {
 			});
 	}
 
+	const toggleIsActive = () => {
+		setActive(!isActive);
+	  };
+
+	  $(window).resize(function() {
+				if ($(window).width() > 768) {
+					setActive(false);
+				}
+		});
+
 	return (
 		<header>
 			<nav className="main-nav" id="main-nav">
@@ -38,12 +50,12 @@ const Header = () => {
 							<span style={{ marginLeft: "13px" }}>Wecare</span>
 						</div>
 					</Link>
-					<div id="menu-button">
+					<div id="menu-button" onClick={toggleIsActive}>
 						<div className="bar1"></div>
 						<div className="bar2"></div>
 						<div className="bar3"></div>
 					</div>
-					<ul className="nav-links">
+					<ul className={isActive ? 'nav-open' : 'nav-links'}>
 						<li>
 							<Link to="/">Home</Link>
 						</li>
@@ -53,15 +65,13 @@ const Header = () => {
 						<li>
 							<Link to="/contact">Contact</Link>
 						</li>
-						<Link to={"/userform"}>
-						<li style={{cursor: "pointer"}}>
-							<a style={{ backgroundColor: "#C4AC75" , color: "black", padding: "10px 20px", marginTop: "-10px" }}>
+						<li  className="appointment" >
+							<Link to="/userform" style={{ color: '#fff'}}>
 								Book Your Appointment
-							</a>
+							</Link>
 						</li>
-						</Link>
-						<li onClick={loginwithgoogle} style={{cursor: "pointer"}}>
-							<a style={{ border: `2px solid #c4ac8c` , color: "white", padding: "10px 20px", marginTop: "-11px" }}>
+						<li onClick={loginwithgoogle}  className='doctor'>
+							<a>
 								Doctor Login
 							</a>
 						</li>

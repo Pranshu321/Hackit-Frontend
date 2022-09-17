@@ -1,8 +1,6 @@
 @import "../variables/colors";
-@import "../base/reset";
 @import "../variables/fonts";
 @import "../base/_mixins.scss";
-
 
 .main-nav {
     display: block;
@@ -47,10 +45,38 @@
             display: flex;
             height: auto;
         }
+        .appointment {
+            background: $color_5;
+            padding: 0.5rem 1rem;
+            color: $white;
+            font-size: 1.2rem;
+            font-weight: 300;
+            text-decoration: none;
+            border: 1px solid $color_5;
+            transition: background 0.3s ease-in-out;
+            &:hover {
+                background: $color_3;
+            }
+        }
+        .doctor {
+            cursor: pointer;
+            a {
+                border: 2px solid $color_5;
+                color: white;
+                padding: 10px 20px;
+                font-size: 1.2rem;
+                transition: background 0.3s ease-in-out;
+                &:hover {
+                    background: $color_5;
+                    color: $white;
+                }
+            }
+        }
 
         li {
             margin: 1rem;
             text-align: center;
+            @include center;
 
             a {
                 color: $color_5;
@@ -68,14 +94,44 @@
         height: auto;
         background: $color_3;
 
+        .appointment {
+            background: $color_5;
+            padding: 0.5rem 1rem;
+            color: $white;
+            font-size: 1.2rem;
+            font-weight: 300;
+            text-decoration: none;
+            border: 1px solid $color_5;
+            transition: background 0.3s ease-in-out;
+            &:hover {
+                background: $color_3;
+            }
+        }
+        .doctor {
+            cursor: pointer;
+            a {
+                border: 2px solid $color_5;
+                color: white;
+                padding: 10px 20px;
+                font-size: 1.2rem;
+                transition: background 0.3s ease-in-out;
+                &:hover {
+                    background: $color_5;
+                    color: $white;
+                }
+            }
+        }
+
         li {
-            margin: 0;
+            margin: 1rem;
+            text-align: center;
+            @include center;
 
             a {
-                padding: 2rem 0;
+                color: $color_5;
+                display: block;
+                text-decoration: none;
             }
-
-            border-top: 1px solid transparentize($white, 0.8);
         }
     }
 }
