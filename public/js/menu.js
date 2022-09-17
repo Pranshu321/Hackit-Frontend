@@ -1,7 +1,6 @@
 // When the menu button is click then open the nav menu
 $('#menu-button').click(function() {
      $(this).toggleClass('change');
-     console.log('menu button clicked');
      $('.nav-links').toggleClass('nav-open');
 });
 

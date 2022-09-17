@@ -1,8 +1,7 @@
 @import "../variables/colors";
+@import "../base/reset";
 @import "../variables/fonts";
 @import "../base/_mixins.scss";
-@import '../mixins/_mixin.scss';
-
 
 
 .main-nav {
@@ -48,27 +47,6 @@
             display: flex;
             height: auto;
         }
-        .appointement {
-            background: $color_5;
-            color: $color_3 !important;
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            font-weight: 300;
-            text-transform: uppercase;
-            transition: all 0.3s ease-in-out;
-
-            &:hover {
-                background: $color_3;
-                color: $color_5;
-            }
-            // style={{
-            //     backgroundColor: "#C4AC75",
-            //     color: "black",
-            //     padding: "10px 20px",
-            //     marginTop: "-10px",
-            //     text
-            // }}
-        }
 
         li {
             margin: 1rem;
@@ -80,7 +58,6 @@
                 text-decoration: none;
             }
         }
-       
     }
 
     .nav-open {
