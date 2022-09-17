@@ -3,10 +3,12 @@ import { auth, db } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { doc, setDoc, getDoc, onSnapshot } from "firebase/firestore";
+import { doc, setDoc, getDoc, onSnapshot, collection, getDocs } from "firebase/firestore";
+
 const Dashboard = () => {
 	const [users, setuser] = useState([{}]);
 	const [photo, setphot] = useState("");
+	const [usersConsult, setuserConsult] = useState([]);
 	const [doctor, setdoctor] = useState({
 		Name: users.displayName,
 		Uid: users.uid,
@@ -50,6 +52,15 @@ const Dashboard = () => {
 		// });
 	}
 
+	async function userDetails() {
+		const querySnapshot = await getDocs(collection(db, "Patient"));
+		querySnapshot.forEach((doc) => {
+
+			setuserConsult([...usersConsult, usersConsult.push(doc.data())]);
+		});
+		console.log(usersConsult);
+	}
+
 	async function UserAuthdetails() {
 		onAuthStateChanged(auth, (user) => {
 			doctorgetdatafromfirestore();
@@ -71,9 +82,13 @@ const Dashboard = () => {
 	}
 
 	useEffect(() => {
+		userDetails();
+	}, []);
+
+	useEffect(() => {
 		doctorgetdatafromfirestore();
 		UserAuthdetails();
-	}, []);
+	}, [users]);
 	return (
 		<>
 			<ToastContainer
@@ -93,7 +108,7 @@ const Dashboard = () => {
 						<div class="app-header-logo">
 							<div class="logo">
 								<span class="logo-icon">
-									<img src={photo} alt="profile" style={{ borderRadius: "100%" }} />
+									<img src={photo != null ? photo : "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png"} alt="profile" style={{ borderRadius: "100%" }} />
 								</span>
 								<h1 class="logo-title">
 									<span>{users.displayName}</span>
@@ -190,52 +205,41 @@ const Dashboard = () => {
 							</section>
 							<section class="transfer-section">
 								<div class="transfer-section-header">
-									<h2>Latest transfers</h2>
+									<h2>Users Waiting</h2>
 								</div>
 								<div class="transfers">
-									<div class="transfer">
-										<div class="transfer-logo">
-											<img src="https://assets.codepen.io/285131/apple.svg" />
-										</div>
-										<dl class="transfer-details">
-											<div>
-												<dt>Apple Inc.</dt>
-												<dd>Apple ID Payment</dd>
-											</div>
-											<div>
-												<dt>4012</dt>
-												<dd>Last four digits</dd>
-											</div>
-											<div>
-												<dt>28 Oct. 21</dt>
-												<dd>Date payment</dd>
-											</div>
-										</dl>
-										<div class="transfer-number">- $ 550</div>
-									</div>
-									<div class="transfer">
-										<div class="transfer-logo">
-											<img src="https://assets.codepen.io/285131/pinterest.svg" />
-										</div>
-										<dl class="transfer-details">
-											<div>
-												<dt>Pinterest</dt>
-												<dd>2 year subscription</dd>
-											</div>
-											<div>
-												<dt>5214</dt>
-												<dd>Last four digits</dd>
-											</div>
-											<div>
-												<dt>26 Oct. 21</dt>
-												<dd>Date payment</dd>
-											</div>
-										</dl>
-										<div class="transfer-number">- $ 120</div>
-									</div>
-									<div class="transfer">
-										<div class="transfer-logo">
-											<img src="https://assets.codepen.io/285131/warner-bros.svg" />
+									{usersConsult.map((item, i) => {
+										if (i!=usersConsult.length-1) {
+											return (
+												<div class="transfer">
+													<div class="">
+														<img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" width={50} height={50} />
+													</div>
+													<dl class="transfer-details">
+														<div>
+															<dt>{item.Name}</dt>
+															<dd>Name</dd>
+														</div>
+														<div>
+															<dt>{item.Disease}</dt>
+															<dd>Disease</dd>
+														</div>
+														<div>
+															<dt>{item.Date}</dt>
+															<dd>{usersConsult[i].Time}</dd>
+														</div>
+														<div>
+															<dt>{item.Email}</dt>
+															<dd>Email</dd>
+														</div>
+													</dl>
+												</div>
+											);
+										}
+									})}
+									{/* <div class="transfer">
+										<div class="">
+											<img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" width={50} height={50} />
 										</div>
 										<dl class="transfer-details">
 											<div>
@@ -250,9 +254,12 @@ const Dashboard = () => {
 												<dt>22 Oct. 21</dt>
 												<dd>Date payment</dd>
 											</div>
+											<div>
+												<dt>22 Oct. 21</dt>
+												<dd>Time Requested</dd>
+											</div>
 										</dl>
-										<div class="transfer-number">- $ 70</div>
-									</div>
+									</div> */}
 								</div>
 							</section>
 						</div>
