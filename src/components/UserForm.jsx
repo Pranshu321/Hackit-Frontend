@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "../assets/scss/components/userform.scss"
+// import "../assets/scss/components/userform.scss"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addDoc, collection } from "firebase/firestore";
