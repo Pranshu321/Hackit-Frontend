@@ -8,7 +8,6 @@ import Input from "./chatBot/Input";
 
 import API from "../ChatbotAPI";
 
-import "../assets/scss/components/chatbot.scss"
 
 
 const ChatBot = () => {

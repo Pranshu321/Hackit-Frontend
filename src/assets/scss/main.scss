@@ -1,8 +1,7 @@
 @import "./variables/colors";
 @import "./base/reset";
 @import "./variables/fonts";
-
-
+@import "./base/base";
 
 
 html,
@@ -34,8 +33,9 @@ body {
 @import "components/contact";
 @import "components/footer";
 @import "components/dashboard";
-// @import "components/header";
-// @import "components/header";
+@import "components/about";
+@import "components/chatbot";
+@import "components/userform";
 // @import "components/header";
 
 

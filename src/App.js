@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./components/home";
-import "./assets/scss/Home/styles.scss";
+// import "./assets/scss/Home/styles.scss";
 import "./assets/scss/main.scss";
 import { Route, Routes } from "react-router-dom";
 import Contact from "./components/contact";
