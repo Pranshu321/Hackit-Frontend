@@ -3,9 +3,11 @@ import HomePage from "./components/HomePage";
 
 function ChatBot() {
   return (
+    <>
     <div style={{backgroundColor: "#041C34"}}>
       <HomePage />
     </div>
+    </>
   );
 }
 

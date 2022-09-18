@@ -51,6 +51,6 @@ const FunBot = () => {
 };
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<ChatBot />, rootElement);
+ReactDOM.render(<FunBot />, rootElement);
 
 export default FunBot;

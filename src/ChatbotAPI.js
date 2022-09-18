@@ -3,35 +3,7 @@ import axios from "axios";
 async function moodGuesser(message) {
 	// http://tweetmoodchk.d7cgcshfajbxf6dv.eastus.azurecontainer.io/mood
 
-	// const response = await fetch(
-	// 	"https://indian-jokes-api.herokuapp.com/jokes/random",
-	// 	{
-	// 		method: "GET",
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 		},
-	// 	}
-	// )
-	// 	.then((response) => response.json())
-	// 	.then((json) => console.log(json))
-	// 	.catch((error) => console.log(error));
-
-	// const data = await response.json();
-	// return data.text;
-
-	// const response = await axios
-	// 	.get("https://indian-jokes-api.herokuapp.com/jokes/random", {
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 			"Access-Control-Allow-Origin": "*",
-	// 			"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-	// 			"Access-Control-Allow-Headers":
-	// 				"Origin, X-Requested-With, Content-Type, Accept",
-	// 		},
-	// 	})
-	// 	.then((response) => console.log(response))
-	// 	.catch((error) => console.log(error));
-	// return response;
+	
 
 	const response = axios
 		.get("https://official-joke-api.appspot.com/random_joke")
