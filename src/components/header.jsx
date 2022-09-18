@@ -71,7 +71,7 @@ const Header = () => {
 							</Link>
 						</li>
 						<li onClick={loginwithgoogle}  className='doctor'>
-							<a onClick={loginwithgoogle} >
+							<a>
 								Doctor Login
 							</a>
 						</li>
