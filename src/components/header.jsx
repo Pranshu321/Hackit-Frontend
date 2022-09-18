@@ -50,7 +50,7 @@ const Header = () => {
 							<span style={{ marginLeft: "13px" }}>Wecare</span>
 						</div>
 					</Link>
-					<div id="menu-button" onClick={toggleIsActive}>
+					<div id="menu-button" onClick={toggleIsActive} className={isActive ? 'change' : null}>
 						<div className="bar1"></div>
 						<div className="bar2"></div>
 						<div className="bar3"></div>
@@ -71,7 +71,7 @@ const Header = () => {
 							</Link>
 						</li>
 						<li onClick={loginwithgoogle}  className='doctor'>
-							<a>
+							<a onClick={loginwithgoogle} >
 								Doctor Login
 							</a>
 						</li>

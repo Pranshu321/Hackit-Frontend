@@ -47,7 +47,7 @@ const UserForm = () => {
     return (
         <>
             <Header />
-            <div className='main-user' style={{marginBottom: "20px" , paddingTop: "100px" , paddingBottom: "50px"}}>
+            <div className='main-user' style={{paddingTop: "200px" , paddingBottom: "100px"}}>
                 <ToastContainer
                     position="bottom-right"
                     autoClose={5000}

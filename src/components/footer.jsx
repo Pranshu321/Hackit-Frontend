@@ -3,12 +3,10 @@ import React from "react";
 const Footer = () => {
     return (
         <>
-            <footer>
+            <footer className="mainfooter">
                 <div className="content-wrapper-sm display-flex-between">
                     {/* <!-- Easily replaceble copyright information --> */}
                     <small>© {new Date().getFullYear()} , WeCare Copyright , All rights reserved </small>
-
-
 
                     {/* <!-- Make sure to edit the links so that they go to your social media. --> */}
                     <div className="social-links">

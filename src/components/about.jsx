@@ -10,8 +10,8 @@ const About = () => {
 				<title>Wecare | About</title>
 			</Helmet>
 			<Header />
-
-			<div className="content-wrapper" id="about">
+			< div className="about">	
+			<div className="content-wrapper " id="about">
 				{/* <!-- second replaceble image --> */}
 				<img
 					className="img-absolute"
@@ -60,6 +60,7 @@ const About = () => {
 						Try Now
 					</a>
 				</Link>
+			</div>
 			</div>
 			<Footer />
 
