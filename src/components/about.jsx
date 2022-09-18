@@ -10,8 +10,8 @@ const About = () => {
 				<title>Wecare | About</title>
 			</Helmet>
 			<Header />
-
-			<div className="content-wrapper" id="about">
+			< div className="about">	
+			<div className="content-wrapper " id="about">
 				{/* <!-- second replaceble image --> */}
 				<img
 					className="img-absolute"
@@ -21,7 +21,6 @@ const About = () => {
 				<div className="grid" style={{ marginTop: "90px" }}>
 					<div
 						className="grid-col-sm-12 grid-col-md-6 astonish"
-						data-animation="fadeInLeft"
 					>
 						<h2 className="section-title" style={{ fontSize: "3rem" }}>About Wecare</h2>
 						<p>
@@ -47,7 +46,6 @@ const About = () => {
 			<div
 				id="reserve"
 				className="content-wrapper-lg text-center astonish"
-				data-animation="zoomIn"
 			>
 				<h2 className="section-title" style={{ fontSize: "2.5rem" }}>Explore Our AI-BOT</h2>
 				<p>
@@ -62,6 +60,7 @@ const About = () => {
 						Try Now
 					</a>
 				</Link>
+			</div>
 			</div>
 			<Footer />
 
