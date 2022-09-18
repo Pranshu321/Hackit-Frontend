@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
-import Messages from "./chatBot/Messages";
-import BotMessage from "./chatBot/BotMessage";
-import UserMessage from "./chatBot/UserMessage";
-import Input from "./chatBot/Input";
+import Messages from "./funBot/Messages";
+import BotMessage from "./funBot/BotMessage";
+import UserMessage from "./funBot/UserMessage";
+import Input from "./funBot/Input";
 
 import API from "../ChatbotAPI";
 
 // import "../assets/scss/components/chatbot.scss"
 
 
-const ChatBot = () => {
+const FunBot = () => {
 	const [messages, setMessages] = useState([]);
     
 	useEffect(() => {
@@ -53,4 +53,4 @@ const ChatBot = () => {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<ChatBot />, rootElement);
 
-export default ChatBot;
+export default FunBot;
