@@ -5,9 +5,9 @@ import "./assets/scss/main.scss";
 import { Route, Routes } from "react-router-dom";
 import Contact from "./components/contact";
 import About from "./components/about";
-import ChatBot from "./components/ChatBot";
 import Dashboard from "./components/Dashboard";
 import UserForm from "./components/UserForm";
+import ChatBot from "./components/chatBot/App";
 
 function App() {
 	return (
