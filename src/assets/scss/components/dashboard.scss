@@ -77,7 +77,10 @@ a {
 
 .app-header {
 	display: grid;
-	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(max-content, 400px);
+	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
+			max-content,
+			400px
+		);
 	column-gap: 4rem;
 	align-items: flex-end;
 	@media (max-width: 1200px) {
@@ -123,7 +126,10 @@ a {
 .app-body {
 	height: 100%;
 	display: grid;
-	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(min-content, 400px);
+	grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(
+			min-content,
+			400px
+		);
 
 	column-gap: 4rem;
 	padding-top: 2.5rem;

@@ -123,14 +123,14 @@ const Dashboard = () => {
 									<i class="ph-browsers"></i>
 									<span>Dashboard</span>
 								</a>
-								<a href="#">
+								{/* <a href="#">
 									<i class="ph-check-square"></i>
 									<span>Event Scheduled</span>
 								</a>
 								<a href="#">
 									<i class="ph-swap"></i>
 									<span>Profile</span>
-								</a>
+								</a> */}
 								<a href="#" onClick={() => auth.signOut()}>
 									<i class="ph-swap"></i>
 									<span>Log Out</span>
@@ -209,7 +209,7 @@ const Dashboard = () => {
 								</div>
 								<div class="transfers">
 									{usersConsult.map((item, i) => {
-										if (i!=usersConsult.length-1) {
+										if (i != usersConsult.length - 1) {
 											return (
 												<div class="transfer">
 													<div class="">
