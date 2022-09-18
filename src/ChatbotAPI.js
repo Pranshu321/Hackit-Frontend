@@ -1,66 +1,99 @@
-import axios from 'axios'; 
+import axios from "axios";
 // import fetch  from 'node-fetch';
+async function moodGuesser(message) {
+	// http://tweetmoodchk.d7cgcshfajbxf6dv.eastus.azurecontainer.io/mood
 
-async function moodGuesser(message){
+	// const response = await fetch(
+	// 	"https://indian-jokes-api.herokuapp.com/jokes/random",
+	// 	{
+	// 		method: "GET",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 	}
+	// )
+	// 	.then((response) => response.json())
+	// 	.then((json) => console.log(json))
+	// 	.catch((error) => console.log(error));
 
-  // http://tweetmoodchk.d7cgcshfajbxf6dv.eastus.azurecontainer.io/mood
+	// const data = await response.json();
+	// return data.text;
 
+	// const response = await axios
+	// 	.get("https://indian-jokes-api.herokuapp.com/jokes/random", {
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 			"Access-Control-Allow-Origin": "*",
+	// 			"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+	// 			"Access-Control-Allow-Headers":
+	// 				"Origin, X-Requested-With, Content-Type, Accept",
+	// 		},
+	// 	})
+	// 	.then((response) => console.log(response))
+	// 	.catch((error) => console.log(error));
+	// return response;
 
+	const response = axios
+		.get("https://official-joke-api.appspot.com/random_joke")
+		.then(function (response) {
+			// handle success
+			console.log(response.data);
+		})
+		.catch(function (error) {
+			// handle error
+			console.log(error);
+		})
+		.then(function () {
+			// always executed
+		});
 
-    // const response = await fetch('http://tweetmoodchk.d7cgcshfajbxf6dv.eastus.azurecontainer.io/mood', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Access-Control-Allow-Origin': '*',
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(
-    //         { "?input_mood=": message }
-    //     ),
+	return response.data.setup + response.data.punchline;
+}
 
-    // })
-    // .then(response => response.json())
-    // .then(json => console.log(json))
-    // .catch(error => console.log(error));
+async function getMeme() {
+	const response = axios
+		.get("https://meme-api.herokuapp.com/gimme/IndianDankMemes")
+		.then(function (response) {
+			// handle success
+			console.log(response.data);
+		})
+		.catch(function (error) {
+			// handle error
+			console.log(error);
+		})
+		.then(function () {
+			// always executed
+		});
 
-    // const data = await response.json();
-    // console.log(data);
-    
-
-   const response = await axios.post("https://cbtest201.azurewebsites.net/mood" , {
-    input_mood: message
-   } , {
-    headers: {
-      'Access-Control-Allow-Credentials':true,
-      'Access-Control-Allow-Origin': '*',
-      'content-type': "application/json"
-    }
-   })
-    .then(response => response.json())
-    .catch(error => {
-      console.log(error);
-    });
-
-   console.log(response.data);
-   console.log(response.data.name);
-    return response.data.name;
-
-    
+	return response.data.setup + response.data.punchline;
 }
 
 const API = {
-  GetChatbotResponse: async message => {
-    return new Promise(function(resolve, reject) {
-      setTimeout(function() {
-        if (message === "hi") resolve("Here I am  your mood guesser bot , I will send you jokes and memes which will make you happy!");
-
-        else {
-          resolve(moodGuesser(message));
-          // moodGuesser(message);
-          resolve("echo : " + message);
+	GetChatbotResponse: async (message) => {
+		return new Promise(function (resolve, reject) {
+			setTimeout(function () {
+				if (message === "hi" || message === "hello" || message === "hey")
+					resolve(
+						"Here I am  your mood guesser bot , I will send you jokes which will make you happy! Plese type 'joke'. "
+					);
+				else if (message === "joke") {
+					axios
+						.get("https://official-joke-api.appspot.com/random_joke")
+						.then(function (response) {
+							// handle success
+							console.log(response.data);
+							resolve(response.data.setup + " " + response.data.punchline);
+						})
+						.catch(function (error) {
+							// handle error
+							console.log(error);
+						});
+				} else {
+					resolve("Here I am  your mood guesser bot , I will send you jokes which will make you happy! Plese type 'joke'. ");
         }
-      }, 2000);
-    });
-  }
+			}, 1000);
+		});
+	},
 };
 
 export default API;
