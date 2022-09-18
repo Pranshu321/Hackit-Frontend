@@ -27,7 +27,7 @@ const Home = () => {
 								Feelling ill...?
 							</button>
 						</Link>
-						<Link to="/chatbot">
+						<Link to="/funbot">
 							<button className="btn" style={{ margin: "20px" }}>
 								ligth your mood
 							</button>
